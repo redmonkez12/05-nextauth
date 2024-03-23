@@ -87,7 +87,7 @@ export function LoginForm() {
                                                 placeholder="123456"
                                             />
                                         </FormControl>
-                                        <FormMessage />
+                                        <FormMessage/>
                                     </FormItem>
                                 )}
                             />
@@ -108,7 +108,7 @@ export function LoginForm() {
                                                     type="email"
                                                 />
                                             </FormControl>
-                                            <FormMessage />
+                                            <FormMessage/>
                                         </FormItem>
                                     )}
                                 />
@@ -136,15 +136,15 @@ export function LoginForm() {
                                                     Forgot password?
                                                 </Link>
                                             </Button>
-                                            <FormMessage />
+                                            <FormMessage/>
                                         </FormItem>
                                     )}
                                 />
                             </>
                         )}
                     </div>
-                    <FormError message={error || urlError} />
-                    <FormSuccess message={success} />
+                    <FormError message={error || urlError}/>
+                    <FormSuccess message={success}/>
                     <Button
                         disabled={isPending}
                         type="submit"

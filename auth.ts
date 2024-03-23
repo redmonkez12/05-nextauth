@@ -1,4 +1,4 @@
-import NextAuth, { DefaultSession } from "next-auth";
+import NextAuth from "next-auth";
 
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { db } from "@/lib/db";
@@ -7,6 +7,18 @@ import { getUserById } from "@/data/user";
 import { UserRole } from "@prisma/client";
 
 export const { handlers: { GET, POST }, auth } = NextAuth({
+    pages: {
+        signIn: "/auth/login",
+        error: "/auth/error",
+    },
+    events: {
+        async linkAccount({ user }) {
+            await db.user.update({
+                where: { id: user.id },
+                data: { emailVerified: new Date() },
+            });
+        },
+    },
     callbacks: {
         async signIn({ user, account }) {
             if (account?.provider !== "credentials") return true;
